@@ -27,7 +27,8 @@ task clean(type: Delete) {
 
 ext {
     libraries = [
+            androidxKtx        : '1.6.0',
+            constraintLayout   : '2.1.0',
             material           : '1.4.0',
-            constraintLayout   : '2.1.0'
     ]
 }

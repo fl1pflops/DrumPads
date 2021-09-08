@@ -1,3 +1,4 @@
 <resources>
-
+    <dimen name="pad_button_corner_radius">6dp</dimen>
+    <dimen name="pad_button_gap">4dp</dimen>
 </resources>
