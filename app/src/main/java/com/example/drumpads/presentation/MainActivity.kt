@@ -9,6 +9,7 @@ import com.example.drumpads.presentation.view.PadButton
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var viewModel: SamplerViewModel
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,7 +21,6 @@ class MainActivity : AppCompatActivity() {
         repeat(9) { index ->
             createAndAddPadButton(index)
         }
-
     }
 
     private fun createAndAddPadButton(index: Int) {
@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         setOnClickListener {
-            //TODO call viewModel
+            viewModel.handleAction(Action.PlaySample(index))
         }
     }
 

@@ -40,6 +40,12 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     implementation "androidx.core:core-ktx:$libraries.androidxKtx"
+    implementation "androidx.appcompat:appcompat:$libraries.appcompat"
     implementation "com.google.android.material:material:$libraries.material"
     implementation "androidx.constraintlayout:constraintlayout:$libraries.constraintLayout"
+
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$libraries.lifecycle"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$libraries.lifecycle"
+
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$libraries.coroutines"
 }
