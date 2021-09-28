@@ -47,5 +47,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$libraries.lifecycle"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$libraries.lifecycle"
 
+    implementation "io.insert-koin:koin-android:$libraries.koin"
+
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$libraries.coroutines"
 }
