@@ -1,6 +1,6 @@
 plugins {
-    id 'com.android.application'
-    id 'kotlin-android'
+    alias libs.plugins.android.application
+    alias libs.plugins.kotlin.android
 }
 
 android {
@@ -38,17 +38,15 @@ android {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation libs.androidx.core.ktx
+    implementation libs.androidx.appcompat
+    implementation libs.material
+    implementation libs.androidx.constraintlayout
 
-    implementation "androidx.core:core-ktx:$libraries.androidxKtx"
-    implementation "androidx.appcompat:appcompat:$libraries.appcompat"
-    implementation "com.google.android.material:material:$libraries.material"
-    implementation "androidx.constraintlayout:constraintlayout:$libraries.constraintLayout"
+    implementation libs.androidx.lifecycle.runtime.ktx
+    implementation libs.androidx.lifecycle.viewmodel.ktx
 
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$libraries.lifecycle"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$libraries.lifecycle"
+    implementation libs.koin.android
 
-    implementation "io.insert-koin:koin-android:$libraries.koin"
-
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$libraries.coroutines"
+    implementation libs.kotlinx.coroutines.android
 }
