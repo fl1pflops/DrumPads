@@ -4,6 +4,7 @@ plugins {
 }
 
 android {
+    namespace 'com.example.drumpads'
     compileSdkVersion 30
 
     defaultConfig {
