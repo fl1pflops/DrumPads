@@ -1,3 +1,3 @@
 # DrumPads
 
-Simple 909 drum pads sampler
+Simple drum pads sampler
