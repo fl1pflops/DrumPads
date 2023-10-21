@@ -27,8 +27,8 @@ class MainActivity : AppCompatActivity() {
 
         viewModel = getViewModel()
 
-        repeat(9) { index ->
-            createAndAddPadButton(index)
+        binding.changeSamplePackButton.setOnClickListener {
+            viewModel.handleAction(Action.ChangeSamplePack)
         }
 
         observeUiState()
@@ -50,8 +50,12 @@ class MainActivity : AppCompatActivity() {
                                 }
                             }
                             binding.apply {
-                                changeSamplePackButton.text = uiState.currentSamplePackName
-                                changeSamplePackButton.isVisible = uiState.showChangeSamplePackButton
+                                changeSamplePackButton.text = getString(
+                                    R.string.change_sample_pack,
+                                    uiState.currentSamplePackName
+                                )
+                                changeSamplePackButton.isVisible =
+                                    uiState.showChangeSamplePackButton
                                 globalInfoTextView.isVisible = false
                                 flowHelper.isVisible = true
                             }

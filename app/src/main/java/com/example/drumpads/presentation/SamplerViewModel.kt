@@ -43,15 +43,30 @@ class SamplerViewModel(
             is Action.PlaySample -> {
                 drumKit.playSample(action.atIndex)
             }
+
+            Action.ChangeSamplePack -> {
+                if (availableSamplePacks.isEmpty()) return
+
+                var nextSamplePackIndex = selectedSamplePackIndex + 1
+                if (nextSamplePackIndex >= availableSamplePacks.size) {
+                    nextSamplePackIndex = 0
+                }
+
+                availableSamplePacks.getOrNull(nextSamplePackIndex)
+                    ?.also { name ->
+                        loadSamplePack(name)
+                        selectedSamplePackIndex = nextSamplePackIndex
+                        _state.value = UiState.Loaded(name, true)
+                    }
+            }
         }
     }
 
     private fun loadSamplePack(name: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            samplesProvider.getSamplesFromPack("$SAMPLE_PACKS_FOLDER_NAME/$name")
-                .forEach { sample ->
-                    drumKit.addSample(sample)
-                }
+            samplesProvider.getSamplesFromPack("$SAMPLE_PACKS_FOLDER_NAME/$name").run {
+                drumKit.loadSamplePack(this)
+            }
         }
     }
 

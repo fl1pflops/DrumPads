@@ -2,4 +2,5 @@
     <string name="app_name">Drum Pads</string>
     <string name="initializing">Initializing</string>
     <string name="no_sample_packs">No sample packs found</string>
+    <string name="change_sample_pack">%s (Click to change)</string>
 </resources>

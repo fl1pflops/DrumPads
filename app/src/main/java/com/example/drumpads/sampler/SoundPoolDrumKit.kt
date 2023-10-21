@@ -5,24 +5,34 @@ import android.media.SoundPool
 
 class SoundPoolDrumKit : DrumKit {
 
-    private val soundPool: SoundPool = SoundPool.Builder()
-        .setMaxStreams(MAX_SIMULTANEOUS_STREAMS)
-        .build()
-
+    private var soundPool: SoundPool? = null
     private val sampleIds = mutableListOf<Int>()
 
-    override fun addSample(assetFileDescriptor: AssetFileDescriptor) {
-        val soundId = soundPool.load(assetFileDescriptor, PRIORITY)
-        if (soundId != 0) sampleIds.add(soundId)
+    override fun loadSamplePack(samples: List<AssetFileDescriptor>) {
+        release()
+        initSoundPool()
+
+        samples.forEach {
+            soundPool?.load(it, PRIORITY)?.also { soundId ->
+                if (soundId != 0) sampleIds.add(soundId)
+            }
+        }
     }
 
     override fun playSample(index: Int) {
         val soundId = sampleIds.getOrNull(index) ?: return
-        soundPool.play(soundId, VOLUME, VOLUME, PRIORITY, LOOP_COUNT, RATE)
+        soundPool?.play(soundId, VOLUME, VOLUME, PRIORITY, LOOP_COUNT, RATE)
     }
 
     override fun release() {
-        soundPool.release()
+        sampleIds.clear()
+        soundPool?.release()
+    }
+
+    private fun initSoundPool() {
+        soundPool = SoundPool.Builder()
+            .setMaxStreams(MAX_SIMULTANEOUS_STREAMS)
+            .build()
     }
 
     companion object {

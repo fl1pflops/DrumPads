@@ -4,7 +4,7 @@ import android.content.res.AssetFileDescriptor
 
 interface DrumKit {
 
-    fun addSample(assetFileDescriptor: AssetFileDescriptor)
+    fun loadSamplePack(samples: List<AssetFileDescriptor>)
 
     fun playSample(index: Int)
 
