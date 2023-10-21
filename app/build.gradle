@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace 'com.example.drumpads'
-    compileSdkVersion 30
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.example.drumpads"
         minSdkVersion 23
-        targetSdkVersion 30
+        targetSdkVersion 33
         versionCode 1
         versionName "1.0"
     }
