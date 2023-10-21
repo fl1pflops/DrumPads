@@ -6,6 +6,8 @@ import java.io.IOException
 
 class SamplesProvider(private val assetManager: AssetManager) {
 
+    fun getAvailableSamplePacks(path: String): List<String>? = assetManager.list(path)?.asList()
+
     fun getSamplesFromPack(packName: String): List<AssetFileDescriptor> = assetManager.list(packName)
         ?.mapIndexedNotNull { index, sampleName ->
             try {
